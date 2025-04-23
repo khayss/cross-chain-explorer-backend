@@ -1,4 +1,4 @@
-module github.com/khayss/cross-chain-explorer-backend
+module github.com/khayss/seek
 
 go 1.22.2
 

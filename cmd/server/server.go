@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/khayss/cross-chain-explorer-backend/internal/handlers"
+	"github.com/khayss/seek/internal/handlers"
 )
 
 func main() {

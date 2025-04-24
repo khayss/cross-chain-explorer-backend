@@ -1,0 +1,42 @@
+version: "2"
+linters:
+  enable:
+    - bodyclose
+    - errname
+    - gochecknoinits
+    - importas
+    - noctx
+    - paralleltest
+    - prealloc
+    - rowserrcheck
+    - sqlclosecheck
+    - testpackage
+    - thelper
+    - unconvert
+    - unparam
+  disable:
+    - govet
+    - staticcheck
+    - unused
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      - linters:
+          - paralleltest
+        text: does not use range value in test Run
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$

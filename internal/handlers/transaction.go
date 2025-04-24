@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/khayss/seek/pkg/interfaces"
 )
 
 type TransactionForCreate struct {
@@ -15,11 +16,24 @@ type TransactionForCreate struct {
 	ToTokenAddress   string `json:"to_token_address" binding:"required"`
 }
 
-func CreateTransactionHandler(c *gin.Context) {
-	// Implement the logic to create a transaction
-	c.JSON(200, gin.H{
-		"message": "Transaction created",
-	})
+func CreateTransactionHandler(app interfaces.AppInterface) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// db := app.GetDB()
+		// Implement the logic to create a transaction
+		var tx TransactionForCreate
+
+		if err := c.ShouldBindJSON(&tx); err != nil {
+			c.JSON(400, gin.H{
+				"error":   "Invalid request payload",
+				"message": err.Error(),
+			})
+			return
+		}
+
+		c.JSON(200, gin.H{
+			"message": "Transaction created",
+		})
+	}
 }
 
 func GetTransactionsHandler(c *gin.Context) {
